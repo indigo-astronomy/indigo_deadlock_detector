@@ -46,7 +46,7 @@ class gdb_deadlock_detector(gdb.Command):
         print (self.__doc__)
 
     def invoke(self, arg, from_tty):
-        print ("\nBlocked threads:")
+        print ("\nLocked threads:")
         print ("*****************************************************")
         threads = {}
         for process in gdb.inferiors():
@@ -70,9 +70,9 @@ class gdb_deadlock_detector(gdb.Command):
             if thread.waitOnThread:
                 if thread.waitOnThread in threads and threads[thread.waitOnThread].waitOnThread == thread.threadId:
                     if thread.threadId == thread.waitOnThread:
-                        lock_str = "SELFLOCK"
+                        lock_str = "SELF LOCK "
                     else:
-                        lock_str = "DEADLOCK"
+                        lock_str = "INTER LOCK"
                 else:
                     lock_str = "--------"
                 print ("{0} -> Thread {1} waits for thread {2}".format(lock_str, thread.threadId, thread.waitOnThread))
