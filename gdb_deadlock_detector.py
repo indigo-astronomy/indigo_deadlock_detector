@@ -69,10 +69,13 @@ class gdb_deadlock_detector(gdb.Command):
         for (tid, thread) in threads.items():
             if thread.waitOnThread:
                 if thread.waitOnThread in threads and threads[thread.waitOnThread].waitOnThread == thread.threadId:
-                    deadlock_str = "DEADLOCK"
+                    if thread.threadId == thread.waitOnThread:
+                        lock_str = "SELFLOCK"
+                    else:
+                        lock_str = "DEADLOCK"
                 else:
-                    deadlock_str = "--------"
-                print ("{0} -> Thread {1} waits for thread {2}".format(deadlock_str, thread.threadId, thread.waitOnThread))
+                    lock_str = "--------"
+                print ("{0} -> Thread {1} waits for thread {2}".format(lock_str, thread.threadId, thread.waitOnThread))
 
         print ("*****************************************************\n")
 
