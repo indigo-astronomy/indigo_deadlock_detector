@@ -1,0 +1,9 @@
+python 
+import sys
+sys.path.append('.')
+import gdb_deadlock_detector
+end
+
+thread apply all bt
+
+blocked
