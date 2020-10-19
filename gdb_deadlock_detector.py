@@ -1,13 +1,10 @@
 #! /usr/bin/env python
 #
 # Created by Rumen G. Bogdanovski <rumen@skyarchive.org>
-#
-# based on gdb-automatic-deadlock-detector by Damian Ziobro <damian@xmementoit.com>
+# Based on gdb-automatic-deadlock-detector by Damian Ziobro <damian@xmementoit.com>
 
 """
 This script shows blocking C/C++ threads in gdb based on data from core file.
-
-Author: Damian Ziobro <damian@xmementoit.com>
 
 Instruction: 
 1) Create following gdb_deadclock_script:
@@ -50,13 +47,12 @@ class gdb_deadlock_detector(gdb.Command):
 
     def invoke(self, arg, from_tty):
         print ("\nBlocked threads:")
-        print ("********************************************************************************")
+        print ("*****************************************************")
         threads = {}
         for process in gdb.inferiors():
             for thread in process.threads():
                 trd = Thread()
-                trd.threadId = thread.ptid[1] #[1] - threadId; [0] - process pid
-                #print ("Thread: {0}".format(threads[-1].threadId))
+                trd.threadId = thread.ptid[1]
                 thread.switch()
                 frame = gdb.selected_frame()
                 while frame:
@@ -78,6 +74,6 @@ class gdb_deadlock_detector(gdb.Command):
                     deadlock_str = "--------"
                 print ("{0} -> Thread {1} waits for thread {2}".format(deadlock_str, thread.threadId, thread.waitOnThread))
 
-        print ("********************************************************************************\n")
+        print ("*****************************************************\n")
 
 gdb_deadlock_detector()
