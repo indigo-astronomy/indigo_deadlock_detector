@@ -1,6 +1,7 @@
-python 
+python
 import sys
 sys.path.append('.')
+sys.path.append('/usr/local/share/indigo-deadlock-detector')
 import gdb_deadlock_detector
 end
 

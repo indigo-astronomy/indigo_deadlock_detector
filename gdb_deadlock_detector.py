@@ -4,12 +4,12 @@
 # Based on gdb-automatic-deadlock-detector by Damian Ziobro <damian@xmementoit.com>
 
 """
-This script shows blocking C/C++ threads in gdb based on data from core file.
+This script shows blocked C/C++ threads in gdb.
 
-Instruction: 
+Instruction:
 1) Create following gdb_deadclock_script:
 '
-python 
+python
 import gdb_deadlock_detector
 end
 
@@ -37,7 +37,7 @@ class Thread():
 
     def __getitem__(self):
         return self.waitOnThread
-        
+
 
 class gdb_deadlock_detector(gdb.Command):
     #"""custom command => blocked - command show how threads blocks themselves waiting on mutexes"""
@@ -46,7 +46,7 @@ class gdb_deadlock_detector(gdb.Command):
         print (self.__doc__)
 
     def invoke(self, arg, from_tty):
-        print ("\nLocked threads:")
+        print ("\nBlocked threads:")
         print ("*****************************************************")
         threads = {}
         for process in gdb.inferiors():
@@ -70,12 +70,11 @@ class gdb_deadlock_detector(gdb.Command):
             if thread.waitOnThread:
                 if thread.waitOnThread in threads and threads[thread.waitOnThread].waitOnThread == thread.threadId:
                     if thread.threadId == thread.waitOnThread:
-                        lock_str = "SELF LOCK "
+                        print ("SELFLOCK -> Thread {0} locked itself".format(thread.threadId))
                     else:
-                        lock_str = "INTER LOCK"
+                        print ("DEADLOCK -> Thread {0} waits for thread {1}".format(thread.threadId, thread.waitOnThread))
                 else:
-                    lock_str = "--------"
-                print ("{0} -> Thread {1} waits for thread {2}".format(lock_str, thread.threadId, thread.waitOnThread))
+                    print ("BLOCKED  -> Thread {0} is blocked by thread {1}".format(thread.threadId, thread.waitOnThread))
 
         print ("*****************************************************\n")
 
