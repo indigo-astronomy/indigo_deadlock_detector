@@ -29,6 +29,7 @@ DEADLOCK -> Thread 172686 waits for thread 172687
 
 import gdb
 
+
 class Thread():
     def __init__(self):
         self.frames = []
@@ -40,7 +41,6 @@ class Thread():
 
 
 class gdb_deadlock_detector(gdb.Command):
-    #"""custom command => blocked - command show how threads blocks themselves waiting on mutexes"""
     def __init__(self):
         super (gdb_deadlock_detector, self).__init__("blocked", gdb.COMMAND_SUPPORT,gdb.COMPLETE_NONE,True)
         print (self.__doc__)

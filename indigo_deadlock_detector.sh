@@ -1,8 +1,9 @@
 #! /bin/bash
 
 PROC_NAME="indigo_worker"
-GDB_SCRIPT_PATH="/usr/local/share/indigo-deadlock-detector/"
-#GDB_SCRIPT_PATH="."
+
+# DO NOT CHANGE, matched and changed on install
+GDB_SCRIPT_PATH="."
 
 if [ ! -z "$1" ]
 then
@@ -13,9 +14,9 @@ PID=$(ps -ef | grep "$PROC_NAME" | grep -v grep | grep -v `basename "$0"` | tail
 
 if [ -z "$PID" ]
 then
-      echo "Process '$PROC_NAME' not found."
-      echo "To change process name use: $0 <process_name>"
-      exit 1;
+	echo "Process '$PROC_NAME' not found."
+	echo "To change process name use: $0 <process_name>"
+	exit 1;
 fi
 
 echo "Checking '$PROC_NAME' (pid = $PID) for deadlocks"

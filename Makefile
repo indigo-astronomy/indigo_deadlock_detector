@@ -16,9 +16,9 @@ clean:
 
 # Debian package build
 INSTALL_PREFIX=/usr/local
-PACKAGE_NAME="indigo-deadlock-detector"
-PACKAGE_VERSION="0.1"
-BUILD_NO="1"
+PACKAGE_NAME=indigo-deadlock-detector
+PACKAGE_VERSION=0.1
+BUILD_NO=1
 DEBIAN_ARCH=all
 FULL_NAME=$(PACKAGE_NAME)-$(PACKAGE_VERSION)-$(BUILD_NO)-$(DEBIAN_ARCH)
 
@@ -30,6 +30,7 @@ deb-prepare:
 	install gdb_deadlock_script /tmp/$(FULL_NAME)/$(INSTALL_PREFIX)/share/$(PACKAGE_NAME)
 	install gdb_deadlock_detector.py /tmp/$(FULL_NAME)/$(INSTALL_PREFIX)/share/$(PACKAGE_NAME)
 	install indigo_deadlock_detector.sh /tmp/$(FULL_NAME)/$(INSTALL_PREFIX)/bin/indigo_deadlock_detector
+	sed -i "s+GDB_SCRIPT_PATH=\".\"+GDB_SCRIPT_PATH=$(INSTALL_PREFIX)/share/$(PACKAGE_NAME)+g" /tmp/$(FULL_NAME)/$(INSTALL_PREFIX)/bin/indigo_deadlock_detector
 	install README.md /tmp/$(FULL_NAME)/$(INSTALL_PREFIX)/share/$(PACKAGE_NAME)
 
 $(FULL_NAME).deb: deb-prepare
