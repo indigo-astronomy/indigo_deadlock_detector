@@ -2,9 +2,6 @@ python
 import sys
 sys.path.append('.')
 sys.path.append('/usr/local/share/indigo-deadlock-detector')
+sys.path.append('/usr/share/indigo-deadlock-detector')
 import gdb_deadlock_detector
 end
-
-thread apply all bt
-
-blocked

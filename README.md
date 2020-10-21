@@ -1,33 +1,42 @@
 ## indigo_deadlock_detector
 
+Inspects the running INDIGO server process for deadlocks but it can inspect any other process by providing the process name.
+
+It should be executed on the host where indigo server or the examined process is running.
+
 ### In case INDIGO server becomes unresponsive
 
-To display the output on the screen use:
+To display the backtrace, and blocked threads execute:
 
 ```
-sudo indigo_deadlock_detector
+indigo_deadlock_detector
 ```
 
-or to save the output in a file:
+To display the backtrace, blocked threads, and the local variables execute:
 
 ```
-sudo indigo_deadlock_detector >indigo_deadlock.log
+indigo_deadlock_detector -v
 ```
 
-### In case some other indigo process becomes unresponsive
-
-To display the output on the screen use:
-
+To save the output in a file please redirect the output using ">filename.txt" like this:
 
 ```
-sudo indigo_deadlock_detector prcess_name
+indigo_deadlock_detector >indigo_deadlock.txt
 ```
 
-or to save the output in a file:
+### In case some other INDIGO process becomes unresponsive
+
+To display the backtrace, and blocked threads execute:
 
 ```
-sudo indigo_deadlock_detector process_name >process_name_deadlock.log
+indigo_deadlock_detector prcess_name
 ```
 
-### And please send the output to us
+or if local variables are needed:
+
+```
+indigo_deadlock_detector -v prcess_name
+```
+
+### Please send the output to us
 indigo@cloudmakers.eu
