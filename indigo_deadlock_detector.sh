@@ -13,7 +13,7 @@ PRINT_VARS=""
 
 while [[ "$#" -gt 0 ]]; do
 	case $1 in
-		-v|--print-variables) PRINT_VARS="-full"; shift ;;
+		-v|--print-variables) PRINT_VARS="full"; shift ;;
 		-p|--pid) PID="$2"; shift; shift;;
 		*) PROC_NAME="$1"; shift;;
 	esac
