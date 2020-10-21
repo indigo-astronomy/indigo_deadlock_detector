@@ -1,4 +1,9 @@
 #! /bin/bash
+#
+# Copyright (C) 2020 Rumen G. Bogdanovski
+# All rights reserved.
+#
+# You can use this software under the terms of MIT license (see LICENSE).
 
 # DO NOT CHANGE THIS LINE, matched and changed on install
 GDB_SCRIPT_PATH="."
@@ -6,7 +11,6 @@ GDB_SCRIPT_PATH="."
 PROC_NAME="indigo_worker"
 PRINT_VARS=""
 
-#!/bin/bash
 while [[ "$#" -gt 0 ]]; do
 	case $1 in
 		-v|--print-variables) PRINT_VARS="-full"; shift ;;

@@ -1,3 +1,8 @@
+// Copyright (C) 2020 Rumen G. Bogdanovski
+// All rights reserved.
+//
+// You can use this software under the terms of MIT license (see LICENSE).
+
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>

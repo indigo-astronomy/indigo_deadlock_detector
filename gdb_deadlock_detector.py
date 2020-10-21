@@ -1,6 +1,10 @@
 #! /usr/bin/env python
 #
-# Created by Rumen G. Bogdanovski <rumen@skyarchive.org>
+# Copyright (C) 2020 Rumen G. Bogdanovski
+# All rights reserved.
+#
+# You can use this software under the terms of MIT license (see LICENSE).
+#
 # Based on gdb-automatic-deadlock-detector by Damian Ziobro <damian@xmementoit.com>
 
 """

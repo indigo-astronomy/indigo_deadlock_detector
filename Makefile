@@ -1,3 +1,9 @@
+# Copyright (C) 2020 Rumen G. Bogdanovski
+# All rights reserved.
+#
+# You can use this software under the terms of MIT license (see LICENSE).
+
+# Build test executable
 DEBUG_BUILD = -g
 
 CFLAGS = $(DEBUG_BUILD) -O3 -std=gnu11
@@ -13,11 +19,10 @@ deadlock_test: deadlock_test.c
 clean:
 	rm -rf deadlock_test __pycache__
 
-
 # Debian package build
 INSTALL_PREFIX=/usr/local
 PACKAGE_NAME=indigo-deadlock-detector
-PACKAGE_VERSION=0.1
+PACKAGE_VERSION=0.2
 BUILD_NO=1
 DEBIAN_ARCH=all
 FULL_NAME=$(PACKAGE_NAME)-$(PACKAGE_VERSION)-$(BUILD_NO)-$(DEBIAN_ARCH)

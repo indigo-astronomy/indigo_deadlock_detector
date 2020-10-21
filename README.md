@@ -1,4 +1,4 @@
-## indigo_deadlock_detector
+## INDIGO Deadlock Detector (indigo_deadlock_detector)
 
 Inspects the running INDIGO server process for deadlocks but it can inspect any other process by providing the process name.
 
@@ -29,14 +29,22 @@ indigo_deadlock_detector >indigo_deadlock.txt
 To display the backtrace, and blocked threads execute:
 
 ```
-indigo_deadlock_detector prcess_name
+indigo_deadlock_detector <prcess_name>
+```
+or
+```
+indigo_deadlock_detector -p <pid>
 ```
 
-or if local variables are needed:
+If local variables are needed:
 
 ```
-indigo_deadlock_detector -v prcess_name
+indigo_deadlock_detector -v <prcess_name>
 ```
+or
+```
+indigo_deadlock_detector -v -p <pid>
+```
+### Please provide us with the output
 
-### Please send the output to us
-indigo@cloudmakers.eu
+Send the output to indigo@cloudmakers.eu accompanied by a problem description and if possible steps to reproduce it.
