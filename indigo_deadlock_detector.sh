@@ -19,7 +19,7 @@ print_help () {
 	echo "    -p | --pid <pid>        : specify pid of the process to inspect" 1>&2
 	echo "    -v | --print-variables  : print local variables along with the backtrace" 1>&2
 	echo "    -h | --help             : print this help" 1>&2
-	echo "    <process_name>          : name of the process to incpect defaut: 'indigo_worker'" 1>&2
+	echo "    <process_name>          : name of the process to inspect defaut: 'indigo_worker'" 1>&2
 }
 
 while [[ "$#" -gt 0 ]]; do
