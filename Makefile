@@ -20,9 +20,9 @@ clean:
 	rm -rf deadlock_test __pycache__
 
 # Debian package build
-INSTALL_PREFIX=/usr/local
+INSTALL_PREFIX=/usr
 PACKAGE_NAME=indigo-deadlock-detector
-PACKAGE_VERSION=0.3
+PACKAGE_VERSION=0.4
 BUILD_NO=1
 DEBIAN_ARCH=all
 FULL_NAME=$(PACKAGE_NAME)-$(PACKAGE_VERSION)-$(BUILD_NO)-$(DEBIAN_ARCH)
